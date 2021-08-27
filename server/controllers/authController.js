@@ -2,13 +2,14 @@ module.exports = {
     login: async (req, res) => {
         const db = req.app.get('db');
         const { email, password } = req.body
-        const [existingUser] = await db.auth.auth_get_user_by_email([email, password])
-
+        console.log(email, password)
+        const [existingUser] = await db.get_user_password_and_email([email, password])
+        console.log(existingUser)
         if (!existingUser) {
             return res.status(404).send('Your password or email was incorrect')
         }
         console.log(req)
-        req.session.user = existingUser
+        //req.session.user = existingUser
         res.status(200).send(existingUser)
     },
     getUserSession: async (req, res) => {
