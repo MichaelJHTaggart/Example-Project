@@ -1,10 +1,29 @@
-# Session-On-Props
+## Example-Project
 
-The goal of this project is to demonstrate keeping a session alive throughout an application without the use of an application like Redux.
+The goal of this project is to demonstrate: 
 
-##Explanation of Project
+1. [Persistent session in application without the use of Redux](#persistant-session)
+2. [Setup a Postgres database with Heroku](#postgres-with-heroku)
+3. [Implement Sequelize to make database queries to Heroku](#sequelize)
 
-Exploring the different ways to store a user's session and how to make an application responsive and active while navigating through different pages or clicking refresh in their browser.
+### Persistant Session
+
+You understand the following problem:
+1. A user comes to your website. 
+2. They log into your website to access specific information on their account.
+3. After logging in, they click the refresh button on their browser.
+
+If not handled the refresh button will do the following: All information in the application is set to is initial state. 
+
+In this application we explore some different ways to store a user's session to handle the refresh button. *Also note that refresh is the default state of submitting a form element
+
+### Postgres with Heroku
+
+You understand that Heroku is going to create a Postgres Database, and will provide you with a code to allow you to make queries to the database that is being stored in Heroku.
+
+### Sequelize
+
+You have learned how to make queries in a Sequel format. Now it is time to learn how to make queries in a Sequelize format!
 
 ### Component Tree
 
