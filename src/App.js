@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Routes from './Routes';
 import axios from 'axios';
 import React, { useState } from 'react';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     <div className="App">
       <Header />
       {Routes}
+      <Footer />
     </div>
   );
 }
