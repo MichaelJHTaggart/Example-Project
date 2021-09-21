@@ -1,4 +1,5 @@
-const User = require('../Sequelize/userModel')
+const db = require("../Sequelize")
+const User = db.user
 
 module.exports = {
   displayServer: (req, res) => {
@@ -7,8 +8,8 @@ module.exports = {
   },
 
   getAllUsers: (req, res) => {
-    User.User.findAll()
-      .then(allUsers => {
+    User.findAll()
+    .then(allUsers => {
         console.log(allUsers)
         res.json(allUsers);
       })
@@ -16,7 +17,7 @@ module.exports = {
   },
 
   addUser: (req, res) => {
-    User.User.create({ username: req.body.username })
+    User.create({ username: req.body.username })
     res.status(201).end(req.body.username)
   }
 
