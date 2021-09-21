@@ -1,4 +1,4 @@
-const User = require('../models/userModel')
+const User = require('../Sequelize/userModel')
 
 module.exports = {
   displayServer: (req, res) => {
