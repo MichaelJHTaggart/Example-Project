@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
-const ctrl = require('./controllers/controllers')
+const userCtrl = require('./controllers/userControllers')
+const authCtrl = require('./controllers/authControllers')
 
 
 app.use(express.json());
@@ -15,10 +16,8 @@ app.use(express.json());
 //   })
 // )
 
-app.get("/", ctrl.displayServer);
-
-app.get("/allUsers" , ctrl.getAllUsers)
-
-app.post('/addUser', ctrl.addUser)
+app.get("/", userCtrl.displayServer);
+app.get("/allUsers" , userCtrl.getAllUsers)
+app.post('/addUser', userCtrl.addUser)
   
   app.listen(process.env.SERVER_PORT, console.log(`PORT ${process.env.SERVER_PORT} is running~`));
