@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const userCtrl = require('./controllers/userControllers')
 const authCtrl = require('./controllers/authControllers')
-
+//yoyoyoyoyoyoyoy :)
 
 app.use(express.json());
 
@@ -15,6 +15,10 @@ app.use(express.json());
 //     cookie: { maxAge: 1000 * 60 * 60 * 24 },
 //   })
 // )
+
+// app.post('/login', authCtrl.login)
+// app.delete('/logout', authCtrl.logout)
+// app.post('/register',authCtrl.register)
 
 app.get("/", userCtrl.displayServer);
 app.get("/allUsers" , userCtrl.getAllUsers)
