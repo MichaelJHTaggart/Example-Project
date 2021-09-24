@@ -17,9 +17,24 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
     },
   });
 
-  const db = {};
-  db.Sequelize = Sequelize;
-  db.sequelize = sequelize;
+sequelize
+  .sync({
+    logging: console.log,
+  })
+  .then(()=>{
   
-  db.user = require('./userModel')(sequelize, Sequelize);
-  module.exports = db;
+    console.log("DB connected !");
+  })
+
+  .catch((err) => {
+    console.error("DB NOT CONNECTED =O ", err);
+  });
+
+const db ={
+  Sequelize:Sequelize,
+  sequelize:sequelize,
+  user: require('./userModel')(sequelize, Sequelize)
+}
+
+
+module.exports = db
