@@ -1,5 +1,5 @@
 const db = require("../Sequelize")
-const User = db.user
+const user = db.user
 
 module.exports = {
   displayServer: (req, res) => {
@@ -8,17 +8,15 @@ module.exports = {
   },
 
   getAllUsers: (req, res) => {
-    User.findAll()
-    .then(allUsers => {
+    user.findAll()
+      .then(allUsers => {
         console.log(allUsers)
         res.json(allUsers);
       })
-
   },
 
   addUser: (req, res) => {
-    User.create({ username: req.body.username })
+    user.create({ username: req.body.username })
     res.status(201).end(req.body.username)
   }
-
 };

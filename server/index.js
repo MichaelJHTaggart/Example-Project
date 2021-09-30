@@ -21,7 +21,7 @@ app.use(express.json());
 // app.post('/register',authCtrl.register)
 
 app.get("/", userCtrl.displayServer);
-app.get("/allUsers" , userCtrl.getAllUsers)
+app.get("/allUsers", userCtrl.getAllUsers)
 app.post('/addUser', userCtrl.addUser)
-  
-  app.listen(process.env.SERVER_PORT, console.log(`PORT ${process.env.SERVER_PORT} is running~`));
+
+app.listen(process.env.SERVER_PORT, console.log(`PORT ${process.env.SERVER_PORT} is running~`));
