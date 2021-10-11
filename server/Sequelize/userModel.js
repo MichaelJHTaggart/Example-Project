@@ -9,8 +9,8 @@
 	// 		type: DataTypes.INTEGER
 	// 	}
 
-module.exports = (sequelize, Sequelize) => {
-    const User = sequelize.define('users2', {
+module.exports = (connection, Sequelize) => {
+    const User = connection.define('users2', {
         username: {
             type: Sequelize.STRING,
             allowNull: false, //cannot be emptycode
@@ -20,6 +20,10 @@ module.exports = (sequelize, Sequelize) => {
                 // this validate  & REGEX is recommended by the Sequelize team, it will make sure
                 //usernames to have length of at least 3, and only use letters, numbers and underscores.
             }
+        },
+        email: {
+            type: Sequelize.STRING,
+            allowNull: false //cannot be emptycode
         }
     });
 

@@ -4,9 +4,9 @@ function Footer() {
  return (
   <div>
 
-   <header>
+   <footer>
     <h1>Footer</h1>
-   </header>
+   </footer>
   </div>
  )
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
 
-function Login() {
+function Login(props) {
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -11,10 +11,15 @@ function Login() {
     await axios.post('/auth/login', { username, password })
       .then(res => {
         console.log(res.data)
+        props.history.push('accountdash')
       }).catch(err => {
         console.log(err)
       })
 
+  }
+
+  const toRegister=()=>{
+    props.history.push('/register')
   }
 
 
@@ -32,8 +37,9 @@ function Login() {
         </label>
         <input type="submit" value="Submit" />
       </form>
-
+<button onClick={toRegister}>Register</button>
     </div>
+
   )
 }
 

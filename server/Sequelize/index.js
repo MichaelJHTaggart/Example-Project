@@ -1,7 +1,8 @@
 require("dotenv").config();
 const Sequelize = require("sequelize");
 const {CONNECTION_STRING} = process.env
-const sequelize = new Sequelize(CONNECTION_STRING, {
+
+const connection = new Sequelize(CONNECTION_STRING, {
     //for using my heroku uri I needed this setup
     // to connect with other database hosts it could be different
     //or if hosting youself it yourself it will be a differnt setup
@@ -17,7 +18,7 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
     },
   });
 
-sequelize
+  connection
   .sync({
     logging: console.log,
   })
@@ -32,8 +33,8 @@ sequelize
 
 const db ={
   Sequelize:Sequelize,
-  sequelize:sequelize,
-  user: require('./userModel')(sequelize, Sequelize)
+  connection:connection,
+  user: require('./userModel')(connection, Sequelize)
 }
 
 
