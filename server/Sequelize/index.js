@@ -1,5 +1,6 @@
 require("dotenv").config();
 const Sequelize = require("sequelize");
+const bcrypt = require('bcrypt')
 const {CONNECTION_STRING} = process.env
 
 const connection = new Sequelize(CONNECTION_STRING, {
@@ -36,6 +37,12 @@ const db ={
   connection:connection,
   user: require('./userModel')(connection, Sequelize)
 }
+
+//encrypts password given by user
+db.user.beforeCreate((user)=>{
+  const salt = bcrypt.genSaltSync()
+  user.password = bcrypt.hashSync(user.password,salt)
+})
 
 
 module.exports = db

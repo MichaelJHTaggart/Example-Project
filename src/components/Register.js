@@ -2,16 +2,15 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
 
-function Login() {
+function Register() {
 
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   async function register(username,email) {
-
       console.log(username,email)
-    await axios.post('/addUser', { username, email })
+    await axios.post('/register', { username, email })
       .then(res => {
         this.props.history.push('/accountdash')
       }).catch(err => {
@@ -40,4 +39,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Register
