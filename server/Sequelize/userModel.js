@@ -21,7 +21,7 @@ module.exports = (connection, Sequelize) => {
                 //usernames to have length of at least 3, and only use letters, numbers and underscores.
             }
         },
-        email: {
+        password: {
             type: Sequelize.STRING,
             allowNull: false //cannot be emptycode
         }

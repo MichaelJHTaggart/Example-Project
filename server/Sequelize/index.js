@@ -44,5 +44,9 @@ db.user.beforeCreate((user)=>{
   user.password = bcrypt.hashSync(user.password,salt)
 })
 
+db.user.prototype.validatePassword=(password)=>{
+  return bcrypt.compareSync(password, this.password)
+}
+
 
 module.exports = db

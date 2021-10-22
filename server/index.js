@@ -1,6 +1,7 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
-const session = require('express-sessions')
+const session = require('express-session')
 const userCtrl = require('./controllers/userControllers')
 const authCtrl = require('./controllers/authControllers')
 //yoyoyoyoyoyoyoy :)
@@ -12,7 +13,7 @@ app.use(
   session({
     resave: false,
     saveUninitialized: true,
-    secret: SESSION_SECRET,
+    secret: process.env.SESSION_SECRET,
     cookie: { maxAge: 1000 * 60 * 60 * 24 },
   })
 )

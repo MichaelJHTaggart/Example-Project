@@ -2,21 +2,27 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
 
-function Register() {
+function Register(props) {
 
+  // const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  async function register(username,email) {
-      console.log(username,email)
-    await axios.post('/register', { username, email })
+  async function register(username,password) {
+    if(username.trim() || password.trim() === ''){
+      alert('must fill out register form! :)')
+    }
+    else{
+      console.log(username,password)
+    await axios.post('/register', { username, password })
       .then(res => {
-        this.props.history.push('/accountdash')
-      }).catch(err => {
-        console.log(err)
-      })
+        console.log(res.data)
+      }).catch(err => console.log(err))
 
+      //routes.push didnt work al time inside .then() works outside tho
+      props.history.push('/accountdash')
+      
+    }
   }
 
 
@@ -25,16 +31,16 @@ function Register() {
     <div className='login'>
       <h1>Register</h1>
 
-      <form onSubmit={(e)=>register(username,email)} className='login-form'>
+      <form onSubmit={(e)=>register(username,password)} className='login-form'>
         <label>
           Username:<input type="text" value={username} onChange={e => setUsername(e.target.value)} />
         </label>
         <label>
-          email:<input type="email" value={email} onChange={e => setEmail(e.target.value)} />
+          Password:<input type="password" value={password} onChange={e => setPassword(e.target.value)} />
         </label>
         <input type="submit" value="Submit" id="submit-button" />
       </form>
-
+    <button onClick={()=>{props.history.push('/accountdash')}}>TEST ROUTE to ACCOUNT DASH</button>
     </div>
   )
 }

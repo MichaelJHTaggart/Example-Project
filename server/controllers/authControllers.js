@@ -2,15 +2,15 @@ const db = require("../Sequelize");
 const user = db.user;
 
 module.exports = {
-  register: (req, res) => {
-    console.log(req.body.username);
-    user.create({ username: req.body.username, email: req.body.email });
+  register: async (req, res) => {
+     console.log(req.body.username);
+    await user.create({ username: req.body.username, password: req.body.password });
 
-    res.status(201).res.send(req.body.username);
+    res.status(201).send(req.body.username);
   },
 
   login: (req, res) => {
-    const { username, email } = req.body;
+    const { username, password } = req.body;
 
     user
       .findOne({
