@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const userCtrl = require('./controllers/userControllers')
 const authCtrl = require('./controllers/authControllers')
+//Test a comment
 
 app.use(express.json());
 
@@ -15,7 +16,6 @@ app.use(express.json());
 //   })
 // )
 
-//API ENDPOINTS
 app.get("/", userCtrl.displayServer);
 app.get("/allUsers", userCtrl.getAllUsers)
 app.post('/addUser', userCtrl.addUser)
